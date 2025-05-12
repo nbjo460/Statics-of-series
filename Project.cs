@@ -34,10 +34,10 @@ namespace Tutorial
             while (true)
             {
                 numbers = Console.ReadLine();
+                _numbers_string[0] = numbers;
                 string indication = validation_number(_list_numbers, _numbers_string);
                 if (indication == "excellent")
                 {
-                    _numbers_string[0] = numbers;
                     return;
                 }
                 Console.WriteLine(indication);
