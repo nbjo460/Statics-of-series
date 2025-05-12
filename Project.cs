@@ -9,33 +9,38 @@ namespace Tutorial
     internal class Project
     {
 
-        static void create_statics(string _numbers)
+        static void run()
         {
-            string[] numbers = _numbers.Split(" ");
+            Dictionary<int, object> dict = new Dictionary<int, object>();
+            List<int> numbers = new List<int>();
 
-            if (validate_numbers(numbers))
-            {
+            dict.Add(0, dict);
+            dict.Add(1, numbers);
 
-            }
+
+
         }
 
-        static bool validate_numbers(string[]_numbers)
-        {
-            return true;
-        }
+
+
+
+
+
+
+
         static void Main(string[] args)
         {
-
-            string numbers= Console.ReadLine();
-            create_statics(numbers);
-
-
-
-
-            while (true)
-            {
-
-            }
+            run();
         }
+
+
+
+
+
+
+
+
+
+
     }
 }
