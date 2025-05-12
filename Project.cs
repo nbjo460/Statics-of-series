@@ -120,7 +120,6 @@ namespace Tutorial
                 {
                     case "1":
                         request_input(_list_numbers, _numbers_string);
-                        Console.WriteLine(_list_numbers[0]);
                         break;
                     case "2":
                         break;
@@ -150,6 +149,38 @@ namespace Tutorial
             }
         }
 
+
+        static void print_in_order(List<int> _list_numbers)
+        {
+            foreach(int num in _list_numbers)
+            {
+                Console.WriteLine(num);
+            }
+        }
+
+        static void print_reversed(List<int> _list_numbers)
+        {
+            for (int i = 0; i < _list_numbers.Count(); i++)
+            {
+                Console.WriteLine(^i);
+            }
+        }
+
+        static void print_sorted(List<int> _list_numbers)
+        {
+            List<int> neww = _list_numbers;
+            neww.Sort();
+            foreach(int num in neww)
+            {
+                Console.WriteLine(num);
+            }
+        }
+
+        static void max(List<int> _list_numbers)
+        {
+            int max = -1;
+
+        }
         static void Main(string[] args)
         {
             run();
