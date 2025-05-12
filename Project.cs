@@ -11,13 +11,12 @@ namespace Tutorial
 
         static void run()
         {
-            Dictionary<int, object> dict = new Dictionary<int, object>();
+            List<string> numbers_strings = new List<string>();
             List<int> numbers = new List<int>();
 
-            dict.Add(0, "string numbers");
-            dict.Add(1, numbers);
+            numbers_strings.Add("");
 
-            request_input(dict);
+            request_input(numbers, numbers_strings);
 
             bool infinity = true;
             while (infinity)
@@ -29,23 +28,23 @@ namespace Tutorial
         }
 
 
-        static void request_input(Dictionary<int, object> _dict)
+        static void request_input(List<int> _list_numbers, List<string> _numbers_string)
         {
            string numbers;
             while (true)
             {
                 numbers = Console.ReadLine();
-                string indication = validation_number(_dict);
+                string indication = validation_number(_list_numbers, _numbers_string);
                 if (indication == "excellent")
                 {
-                    _dict[0] = numbers;
+                    _numbers_string[0] = numbers;
                     return;
                 }
                 Console.WriteLine(indication);
             }
 
         }
-        static string validation_number(Dictionary<int, object> _dict)
+        static string validation_number(List<int> _list_numbers, List<string> _numbers_string)
         {
             convert_to_list(_dict);
             List<int> numbers = (List<int>)_dict[1];
@@ -63,7 +62,7 @@ namespace Tutorial
             }
             return "excellent";
         }
-        static void convert_to_list(Dictionary<int, object> _dict)
+        static void convert_to_list(List<int> _list_numbers, List<string> _numbers_string)
         {
             List<int> numbers = new List<int>();
             string str_num = (string) _dict[0];
@@ -99,7 +98,7 @@ namespace Tutorial
 
         }
 
-        static void menu(Dictionary<int, object> _dict)
+        static void menu(List<int> _list_numbers, List<string> _numbers_string)
         {
             Console.WriteLine("\n\n");
             while (true)
