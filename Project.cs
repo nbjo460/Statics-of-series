@@ -101,7 +101,54 @@ namespace Tutorial
 
         static void menu(Dictionary<int, object> _dict)
         {
+            Console.WriteLine("\n\n");
+            while (true)
+            {
+                Console.WriteLine("Welcome to the game:\n" +
+                    "1. Input a Series.\n" +
+                    "2. Display the series in the order it was entered.\n" +
+                    "3. Display the series in the reversed order it was entered.\n" +
+                    "4. Display the series in sorted order (from low to high).\n" +
+                    "5. Display the Max value of the series.\n" +
+                    "6. Display the Min value of the series.\n" +
+                    "7. Display the Average of the series.\n" +
+                    "8. Display the Number of elements in the series.\n" +
+                    "9. Display the Sum of the series.\n" +
+                    "10. Exit");
+                string input = Console.ReadLine();
 
+
+                switch (input)
+                {
+                    case "1":
+                        request_input(_dict);
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    case "6":
+                        break;
+                    case "7":
+                        break;
+                    case "8":
+                        break;
+                    case "9":
+                        break;
+                    case "10":
+                        break;
+                    default:
+                        Console.WriteLine("Try again!");
+                        continue;
+                }
+
+
+
+            }
         }
 
         static void Main(string[] args)

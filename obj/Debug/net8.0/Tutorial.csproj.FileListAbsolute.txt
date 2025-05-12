@@ -12,3 +12,4 @@ C:\Users\Menachem\source\repos\Tutorial\Tutorial\obj\Debug\net8.0\refint\Tutoria
 C:\Users\Menachem\source\repos\Tutorial\Tutorial\obj\Debug\net8.0\Tutorial.pdb
 C:\Users\Menachem\source\repos\Tutorial\Tutorial\obj\Debug\net8.0\Tutorial.genruntimeconfig.cache
 C:\Users\Menachem\source\repos\Tutorial\Tutorial\obj\Debug\net8.0\ref\Tutorial.dll
+C:\Users\Menachem\source\repos\Tutorial\Tutorial\obj\Debug\net8.0\Tutorial.sourcelink.json
