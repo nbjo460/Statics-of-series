@@ -41,9 +41,14 @@ namespace Tutorial
         }
         static string validation_number(Dictionary<int, object> _dict)
         {
+            convert_to_list(_dict);
+
             return "";
         }
+        static void convert_to_list(Dictionary<int, object> _dict)
+        {
 
+        }
 
 
 
