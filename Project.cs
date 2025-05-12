@@ -87,6 +87,7 @@ namespace Tutorial
                         numbers.Add(num_int);
                     }
                 }
+                _dict[1] = numbers;
             }
 
 
