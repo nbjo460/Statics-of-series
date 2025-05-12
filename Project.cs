@@ -21,7 +21,7 @@ namespace Tutorial
             bool infinity = true;
             while (infinity)
             {
-                menu(dict);
+                menu(numbers, numbers_strings);
             }
 
 
@@ -46,14 +46,14 @@ namespace Tutorial
         }
         static string validation_number(List<int> _list_numbers, List<string> _numbers_string)
         {
-            convert_to_list(_dict);
-            List<int> numbers = (List<int>)_dict[1];
+            convert_to_list(_list_numbers, _numbers_string);
             
-            if (numbers.Count() < 3) 
+            
+            if (_list_numbers.Count() < 3) 
             {
                 return "You gave less then 3 numbers.\nTry again.";
             }
-            foreach (int num in numbers)
+            foreach (int num in _list_numbers)
             {
                 if (num < 0)
                 {
@@ -64,8 +64,7 @@ namespace Tutorial
         }
         static void convert_to_list(List<int> _list_numbers, List<string> _numbers_string)
         {
-            List<int> numbers = new List<int>();
-            string str_num = (string) _dict[0];
+            string str_num = _numbers_string[0];
             string[] arr_nums = str_num.Split(" ");
 
             foreach (string num in arr_nums)
@@ -74,7 +73,7 @@ namespace Tutorial
                 try 
                 {
                     num_int = Convert.ToInt32(num);
-                    numbers.Add(num_int);
+                    _list_numbers.Add(num_int);
                 }
                 catch //if contains leeters or special symbols
                 {
@@ -89,10 +88,9 @@ namespace Tutorial
                     if (decompision_num.Length > 0) //validate, that it's will include digits
                     {
                         num_int = Convert.ToInt32(decompision_num);
-                        numbers.Add(num_int);
+                        _list_numbers.Add(num_int);
                     }
                 }
-                _dict[1] = numbers;
             }
 
 
@@ -120,7 +118,7 @@ namespace Tutorial
                 switch (input)
                 {
                     case "1":
-                        request_input(_dict);
+                        request_input(_list_numbers, _numbers_string);
                         break;
                     case "2":
                         break;
