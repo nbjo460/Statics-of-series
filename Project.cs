@@ -122,20 +122,28 @@ namespace Tutorial
                         request_input(_list_numbers, _numbers_string);
                         break;
                     case "2":
+                        print_in_order(_list_numbers);
                         break;
                     case "3":
+                        print_reversed(_list_numbers);
                         break;
                     case "4":
+                        print_sorted(_list_numbers);
                         break;
                     case "5":
+                        max(_list_numbers);
                         break;
                     case "6":
+                        min(_list_numbers);
                         break;
                     case "7":
+                        avaerge(_list_numbers);
                         break;
                     case "8":
+                        count(_list_numbers);
                         break;
                     case "9":
+                        sum(_list_numbers);
                         break;
                     case "10":
                         break;
@@ -162,7 +170,7 @@ namespace Tutorial
         {
             for (int i = 0; i < _list_numbers.Count(); i++)
             {
-                Console.WriteLine(^i);
+                Console.WriteLine(_list_numbers.Count()-i);
             }
         }
 
@@ -179,8 +187,54 @@ namespace Tutorial
         static void max(List<int> _list_numbers)
         {
             int max = -1;
-
+            foreach (int num in _list_numbers)
+            {
+                max = Math.Max(max, num);
+            }
+            Console.WriteLine(max);
         }
+
+        static void min(List<int> _list_numbers)
+        {
+            int min = 214748367;
+            foreach (int num in _list_numbers)
+            {
+                min = Math.Min(min, num);
+            }
+            Console.WriteLine(min);
+        }
+
+        static void avaerge(List<int> _list_numbers)
+        {
+            int sum = 0;
+            foreach (int num in _list_numbers)
+            {
+                sum += num;
+            }
+            Console.WriteLine(sum/_list_numbers.Count());
+        }
+
+        static void count(List<int> _list_numbers)
+        {
+            int sum = 0;
+            foreach (int num in _list_numbers)
+            {
+                sum += 1;
+            }
+            Console.WriteLine(sum);
+        }
+
+        static void sum(List<int> _list_numbers)
+        {
+            int sum = 0;
+            foreach (int num in _list_numbers)
+            {
+                sum += num;
+            }
+            Console.WriteLine(sum);
+        }
+
+
         static void Main(string[] args)
         {
             run();
