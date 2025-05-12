@@ -34,6 +34,7 @@ namespace Tutorial
             while (true)
             {
                 numbers = Console.ReadLine();
+                _list_numbers.Clear();
                 _numbers_string[0] = numbers;
                 string indication = validation_number(_list_numbers, _numbers_string);
                 if (indication == "excellent")
@@ -119,6 +120,7 @@ namespace Tutorial
                 {
                     case "1":
                         request_input(_list_numbers, _numbers_string);
+                        Console.WriteLine(_list_numbers[0]);
                         break;
                     case "2":
                         break;
