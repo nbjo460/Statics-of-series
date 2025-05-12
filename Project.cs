@@ -19,6 +19,12 @@ namespace Tutorial
 
             request_input(dict);
 
+            bool infinity = true;
+            while (infinity)
+            {
+                menu(dict);
+            }
+
 
         }
 
@@ -93,7 +99,10 @@ namespace Tutorial
 
         }
 
+        static void menu(Dictionary<int, object> _dict)
+        {
 
+        }
 
         static void Main(string[] args)
         {
