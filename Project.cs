@@ -11,26 +11,27 @@ namespace Tutorial
 
         static void run(string[] _args)
         {
+            /*
+            dict[0] = user input
+            dict[1] = string arguments
+            dict[2] = boolean of menu
+            dict[3] = list of numbers
+             */
             Dictionary<int, object> dict = new Dictionary<int, object>();
             List<int> numbers = new List<int>();
-            dict.Add(0, "string numbers");
 
+            dict.Add(0, "string numbers");
             dict.Add(1, _args);
             dict.Add(2, true);
-
             dict.Add(3, numbers);
 
             request_user_input(dict);
 
 
-            while (dict[2])
+            while ((bool)dict[2])
             {
                 menu(dict);
 
-                if (dict[2] == "false")
-                {
-                    infinity = false;
-                }
             }
 
 
@@ -39,12 +40,12 @@ namespace Tutorial
 
         static void request_user_input(Dictionary<int, object> _dict)
         {
-           string numbers;
+           string input_user;
             while (true)
             {
-                numbers = Console.ReadLine();
-                _dict[3].Clear();
-                _dict[0] = numbers;
+                input_user = Console.ReadLine();
+                _dict[3] = new List<int>();
+                _dict[0] = input_user;
                 string indication = validation_number(_dict);
                 if (indication == "excellent")
                 {
@@ -74,7 +75,7 @@ namespace Tutorial
         }
         static void convert_to_list(Dictionary<int, object> _dict)
         {
-            List<int> numbers = new List<int>();
+            List<int> numbers = (List<int>)_dict[3];
             string str_num = (string) _dict[0];
             string[] arr_nums = str_num.Split(" ");
 
@@ -167,7 +168,7 @@ namespace Tutorial
                         infinity = false;
                         break;
                     case "10":
-                        _dict[2] = "false";
+                        _dict[2] = false;
                         infinity = false;
                         break;
                     default:
@@ -181,25 +182,27 @@ namespace Tutorial
         }
 
 
-        static void print_in_order(List<int> _list_numbers)
+        static void print_in_order(Dictionary <int, object> _list_numbers)
         {
-            foreach(int num in _list_numbers)
+            foreach(int num in (List<int>)_list_numbers[3])
             {
                 Console.WriteLine(num);
             }
         }
 
-        static void print_reversed(List<int> _list_numbers)
+        static void print_reversed(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
+
             for (int i = 0; i < _list_numbers.Count(); i++)
             {
-                Console.WriteLine(_list_numbers.Count()-i);
+                Console.WriteLine(_list_numbers[_list_numbers.Count()-i]);
             }
         }
 
-        static void print_sorted(List<int> _list_numbers)
+        static void print_sorted(Dictionary<int, object> _dict)
         {
-            List<int> neww = _list_numbers;
+            List<int> neww = (List<int>)_dict[3];
             neww.Sort();
             foreach(int num in neww)
             {
@@ -207,8 +210,9 @@ namespace Tutorial
             }
         }
 
-        static void max(List<int> _list_numbers)
+        static void max(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
             int max = -1;
             foreach (int num in _list_numbers)
             {
@@ -217,8 +221,9 @@ namespace Tutorial
             Console.WriteLine(max);
         }
 
-        static void min(List<int> _list_numbers)
+        static void min(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
             int min = 214748367;
             foreach (int num in _list_numbers)
             {
@@ -227,8 +232,9 @@ namespace Tutorial
             Console.WriteLine(min);
         }
 
-        static void avaerge(List<int> _list_numbers)
+        static void avaerge(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
@@ -237,8 +243,9 @@ namespace Tutorial
             Console.WriteLine(sum/_list_numbers.Count());
         }
 
-        static void count(List<int> _list_numbers)
+        static void count(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
@@ -247,8 +254,9 @@ namespace Tutorial
             Console.WriteLine(sum);
         }
 
-        static void sum(List<int> _list_numbers)
+        static void sum(Dictionary<int, object> _dict)
         {
+            List<int> _list_numbers = (List<int>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
