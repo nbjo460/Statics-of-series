@@ -196,7 +196,7 @@ namespace Tutorial
 
             for (int i = 0; i < _list_numbers.Count(); i++)
             {
-                Console.WriteLine(_list_numbers[_list_numbers.Count()-i]);
+                Console.WriteLine(_list_numbers[_list_numbers.Count()-i-1]);
             }
         }
 
