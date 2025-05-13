@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Tutorial
 {
     internal class Project
@@ -17,27 +18,30 @@ namespace Tutorial
             dict[2] = boolean of menu
             dict[3] = list of numbers
              */
-            Dictionary<int, object> dict = new Dictionary<int, object>();
+            Dictionary<int, object> store = new Dictionary<int, object>
+            {
+
+            };
             List<float> numbers = new List<float>();
 
-            dict.Add(0, "");
-            dict.Add(1, _args);
-            dict.Add(2, true);
-            dict.Add(3, numbers);
+            store.Add(0, "");
+            store.Add(1, _args);
+            store.Add(2, true);
+            store.Add(3, numbers);
 
-            ManipulateString(dict);
+            RefactorString(store);
 
 
 
-            while ((bool)dict[2])
+            while ((bool)store[2])
             {
-                Menu(dict);
+                Menu(store);
             }
 
 
         }
 
-        static void ManipulateString(Dictionary <int, object> _dict)
+        static void RefactorString(Dictionary <int, object> _dict)
         {
             bool need_user;
             need_user = ExistArgs(_dict);
@@ -49,8 +53,8 @@ namespace Tutorial
             string[] arguments = (string[])_dict[1];
             if (arguments.Length > 2)
             {
-                string joined_arguments = String.Join(" ", arguments);
-                _dict[0] = joined_arguments;
+                string joinedArguments = String.Join(" ", arguments);
+                _dict[0] = joinedArguments;
                 return true;
             }
             return false;
@@ -62,6 +66,8 @@ namespace Tutorial
             {
                 if (asking_user)
                 {
+                    Console.WriteLine("\n\nPlease enter a series of numbers. The series must contain at least 3 numbers (those will be seperated by space.)\n" +
+                        "The Program will ignore letters, therefore, 'e4r5' will calculate as '45'. Each num should be positive.\n\n");
                     input_user = Console.ReadLine();
                     _dict[3] = new List<float>();
                     _dict[0] = input_user;
@@ -80,8 +86,12 @@ namespace Tutorial
         {
             ConvertToList(_dict);
             List<float> numbers = (List<float>)_dict[3];
-            
-            if (numbers.Count() < 3) 
+
+            if (numbers.Count() == 0)
+            {
+                return "You didn't give me at all numbers!";
+            }
+            else if (numbers.Count() < 3) 
             {
                 return "You gave less then 3 numbers.\nTry again.";
             }
@@ -163,38 +173,47 @@ namespace Tutorial
                         infinity = false;
                         break;
                     case "2":
+                        Console.WriteLine("Challange except1");
                         PrintOrder(_dict);
                         infinity = false;
                         break;
                     case "3":
+                        Console.WriteLine("Challange except1");
                         PrintReversed(_dict);
                         infinity = false;
                         break;
                     case "4":
+                        Console.WriteLine("Challange except1");
                         PrintSorted(_dict);
                         infinity = false;
                         break;
                     case "5":
+                        Console.WriteLine("Challange except1");
                         Max(_dict);
                         infinity = false;
                         break;
                     case "6":
+                        Console.WriteLine("Challange except1");
                         Min(_dict);
                         infinity = false;
                         break;
                     case "7":
+                        Console.WriteLine("Challange except1");
                         Avaerge(_dict);
                         infinity = false;
                         break;
                     case "8":
+                        Console.WriteLine("Challange except1");
                         Count(_dict);
                         infinity = false;
                         break;
                     case "9":
+                        Console.WriteLine("Challange except1");
                         Sum(_dict);
                         infinity = false;
                         break;
                     case "10":
+                        Console.WriteLine("GOOD BYE!");
                         _dict[2] = false;
                         infinity = false;
                         break;
