@@ -11,18 +11,18 @@ namespace Tutorial
 
         static void run()
         {
-            List<string> numbers_strings = new List<string>() {"", "true"};
+            List<string> argument_string = new List<string>() {"", "true"};
             List<int> numbers = new List<int>();
 
 
-            request_user_input(numbers, numbers_strings);
+            request_user_input(numbers, argument_string);
 
             bool infinity = true;
             while (infinity)
             {
-                menu(numbers, numbers_strings);
+                menu(numbers, argument_string);
 
-                if (numbers_strings[1] == "false")
+                if (argument_string[1] == "false")
                 {
                     infinity = false;
                 }
