@@ -15,7 +15,7 @@ namespace Tutorial
             List<int> numbers = new List<int>();
 
 
-            request_input(numbers, numbers_strings);
+            request_user_input(numbers, numbers_strings);
 
             bool infinity = true;
             while (infinity)
@@ -32,7 +32,7 @@ namespace Tutorial
         }
 
 
-        static void request_input(List<int> _list_numbers, List<string> _numbers_string)
+        static void request_user_input(List<int> _list_numbers, List<string> _numbers_string)
         {
            string numbers;
             while (true)
@@ -124,7 +124,7 @@ namespace Tutorial
                 switch (input)
                 {
                     case "1":
-                        request_input(_list_numbers, _numbers_string);
+                        request_user_input(_list_numbers, _numbers_string);
                         infinity = false;
                         break;
                     case "2":
