@@ -11,10 +11,9 @@ namespace Tutorial
 
         static void run()
         {
-            List<string> numbers_strings = new List<string>();
+            List<string> numbers_strings = new List<string>() {"", "true"};
             List<int> numbers = new List<int>();
 
-            numbers_strings.Add("");
 
             request_input(numbers, numbers_strings);
 
@@ -22,6 +21,11 @@ namespace Tutorial
             while (infinity)
             {
                 menu(numbers, numbers_strings);
+
+                if (numbers_strings[1] == "false")
+                {
+                    infinity = false;
+                }
             }
 
 
@@ -100,7 +104,8 @@ namespace Tutorial
         static void menu(List<int> _list_numbers, List<string> _numbers_string)
         {
             Console.WriteLine("\n\n");
-            while (true)
+            bool infinity = true;
+            while (infinity)
             {
                 Console.WriteLine("Welcome to the game:\n" +
                     "1. Input a Series.\n" +
@@ -120,32 +125,43 @@ namespace Tutorial
                 {
                     case "1":
                         request_input(_list_numbers, _numbers_string);
+                        infinity = false;
                         break;
                     case "2":
                         print_in_order(_list_numbers);
+                        infinity = false;
                         break;
                     case "3":
                         print_reversed(_list_numbers);
+                        infinity = false;
                         break;
                     case "4":
                         print_sorted(_list_numbers);
+                        infinity = false;
                         break;
                     case "5":
                         max(_list_numbers);
+                        infinity = false;
                         break;
                     case "6":
                         min(_list_numbers);
+                        infinity = false;
                         break;
                     case "7":
                         avaerge(_list_numbers);
+                        infinity = false;
                         break;
                     case "8":
                         count(_list_numbers);
+                        infinity = false;
                         break;
                     case "9":
                         sum(_list_numbers);
+                        infinity = false;
                         break;
                     case "10":
+                        _numbers_string[1] = "false";
+                        infinity = false;
                         break;
                     default:
                         Console.WriteLine("Try again!");
