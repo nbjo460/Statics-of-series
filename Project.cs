@@ -11,18 +11,23 @@ namespace Tutorial
 
         static void run(string[] _args)
         {
-            List<string> argument_string = new List<string>() {"", "true"};
+            Dictionary<int, object> dict = new Dictionary<int, object>();
             List<int> numbers = new List<int>();
+            dict.Add(0, "string numbers");
+
+            dict.Add(1, _args);
+            dict.Add(2, true);
+
+            dict.Add(3, numbers);
+
+            request_user_input(dict);
 
 
-            request_user_input(numbers, argument_string);
-
-            bool infinity = true;
-            while (infinity)
+            while (dict[2])
             {
-                menu(numbers, argument_string);
+                menu(dict);
 
-                if (argument_string[1] == "false")
+                if (dict[2] == "false")
                 {
                     infinity = false;
                 }
@@ -32,15 +37,15 @@ namespace Tutorial
         }
 
 
-        static void request_user_input(List<int> _list_numbers, List<string> _numbers_string)
+        static void request_user_input(Dictionary<int, object> _dict)
         {
            string numbers;
             while (true)
             {
                 numbers = Console.ReadLine();
-                _list_numbers.Clear();
-                _numbers_string[0] = numbers;
-                string indication = validation_number(_list_numbers, _numbers_string);
+                _dict[3].Clear();
+                _dict[0] = numbers;
+                string indication = validation_number(_dict);
                 if (indication == "excellent")
                 {
                     return;
@@ -49,16 +54,16 @@ namespace Tutorial
             }
 
         }
-        static string validation_number(List<int> _list_numbers, List<string> _numbers_string)
+        static string validation_number(Dictionary<int, object> _dict)
         {
-            convert_to_list(_list_numbers, _numbers_string);
+            convert_to_list(_dict);
+            List<int> numbers = (List<int>)_dict[3];
             
-            
-            if (_list_numbers.Count() < 3) 
+            if (numbers.Count() < 3) 
             {
                 return "You gave less then 3 numbers.\nTry again.";
             }
-            foreach (int num in _list_numbers)
+            foreach (int num in numbers)
             {
                 if (num < 0)
                 {
@@ -67,9 +72,10 @@ namespace Tutorial
             }
             return "excellent";
         }
-        static void convert_to_list(List<int> _list_numbers, List<string> _numbers_string)
+        static void convert_to_list(Dictionary<int, object> _dict)
         {
-            string str_num = _numbers_string[0];
+            List<int> numbers = new List<int>();
+            string str_num = (string) _dict[0];
             string[] arr_nums = str_num.Split(" ");
 
             foreach (string num in arr_nums)
@@ -78,7 +84,7 @@ namespace Tutorial
                 try 
                 {
                     num_int = Convert.ToInt32(num);
-                    _list_numbers.Add(num_int);
+                    numbers.Add(num_int);
                 }
                 catch //if contains leeters or special symbols
                 {
@@ -93,15 +99,16 @@ namespace Tutorial
                     if (decompision_num.Length > 0) //validate, that it's will include digits
                     {
                         num_int = Convert.ToInt32(decompision_num);
-                        _list_numbers.Add(num_int);
+                        numbers.Add(num_int);
                     }
                 }
+                _dict[3] = numbers;
             }
 
 
         }
 
-        static void menu(List<int> _list_numbers, List<string> _numbers_string)
+        static void menu(Dictionary<int, object> _dict)
         {
             Console.WriteLine("\n\n");
             bool infinity = true;
@@ -124,43 +131,43 @@ namespace Tutorial
                 switch (input)
                 {
                     case "1":
-                        request_user_input(_list_numbers, _numbers_string);
+                        request_user_input(_dict);
                         infinity = false;
                         break;
                     case "2":
-                        print_in_order(_list_numbers);
+                        print_in_order(_dict);
                         infinity = false;
                         break;
                     case "3":
-                        print_reversed(_list_numbers);
+                        print_reversed(_dict);
                         infinity = false;
                         break;
                     case "4":
-                        print_sorted(_list_numbers);
+                        print_sorted(_dict);
                         infinity = false;
                         break;
                     case "5":
-                        max(_list_numbers);
+                        max(_dict);
                         infinity = false;
                         break;
                     case "6":
-                        min(_list_numbers);
+                        min(_dict);
                         infinity = false;
                         break;
                     case "7":
-                        avaerge(_list_numbers);
+                        avaerge(_dict);
                         infinity = false;
                         break;
                     case "8":
-                        count(_list_numbers);
+                        count(_dict);
                         infinity = false;
                         break;
                     case "9":
-                        sum(_list_numbers);
+                        sum(_dict);
                         infinity = false;
                         break;
                     case "10":
-                        _numbers_string[1] = "false";
+                        _dict[2] = "false";
                         infinity = false;
                         break;
                     default:
