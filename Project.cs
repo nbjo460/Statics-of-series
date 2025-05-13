@@ -35,10 +35,10 @@ namespace Tutorial
             while (true)
             {
                 numbers = Console.ReadLine();
+                _dict[0] = numbers;
                 string indication = validation_number(_dict);
                 if (indication == "excellent")
                 {
-                    _dict[0] = numbers;
                     return;
                 }
                 Console.WriteLine(indication);
