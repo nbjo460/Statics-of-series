@@ -18,7 +18,7 @@ namespace Tutorial
             dict[3] = list of numbers
              */
             Dictionary<int, object> dict = new Dictionary<int, object>();
-            List<int> numbers = new List<int>();
+            List<float> numbers = new List<float>();
 
             dict.Add(0, "string numbers");
             dict.Add(1, _args);
@@ -44,7 +44,7 @@ namespace Tutorial
             while (true)
             {
                 input_user = Console.ReadLine();
-                _dict[3] = new List<int>();
+                _dict[3] = new List<float>();
                 _dict[0] = input_user;
                 string indication = validation_number(_dict);
                 if (indication == "excellent")
@@ -58,13 +58,13 @@ namespace Tutorial
         static string validation_number(Dictionary<int, object> _dict)
         {
             convert_to_list(_dict);
-            List<int> numbers = (List<int>)_dict[3];
+            List<float> numbers = (List<float>)_dict[3];
             
             if (numbers.Count() < 3) 
             {
                 return "You gave less then 3 numbers.\nTry again.";
             }
-            foreach (int num in numbers)
+            foreach (float num in numbers)
             {
                 if (num < 0)
                 {
@@ -75,31 +75,37 @@ namespace Tutorial
         }
         static void convert_to_list(Dictionary<int, object> _dict)
         {
-            List<int> numbers = (List<int>)_dict[3];
+            List<float> numbers = (List<float>)_dict[3];
             string str_num = (string) _dict[0];
             string[] arr_nums = str_num.Split(" ");
 
             foreach (string num in arr_nums)
             {
-                int num_int;
+                float num_int;
                 try 
                 {
-                    num_int = Convert.ToInt32(num);
+                    num_int = (float)Convert.ToDouble(num);
                     numbers.Add(num_int);
                 }
                 catch //if contains leeters or special symbols
                 {
                     string decompision_num = "";
+                    bool possible_point = true;
                     foreach (char c in num) //ignore of non digits. but may be without digits.
                     {
                         if (Char.IsDigit(c))
                         {
                             decompision_num += c;
                         }
+                        if (c=='.' && possible_point)
+                        {
+                            decompision_num += c;
+                            possible_point = false;
+                        }
                     }
                     if (decompision_num.Length > 0) //validate, that it's will include digits
                     {
-                        num_int = Convert.ToInt32(decompision_num);
+                        num_int = (float)Convert.ToDouble(decompision_num);
                         numbers.Add(num_int);
                     }
                 }
@@ -184,7 +190,7 @@ namespace Tutorial
 
         static void print_in_order(Dictionary <int, object> _list_numbers)
         {
-            foreach(int num in (List<int>)_list_numbers[3])
+            foreach(float num in (List<float>)_list_numbers[3])
             {
                 Console.WriteLine(num);
             }
@@ -192,7 +198,7 @@ namespace Tutorial
 
         static void print_reversed(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
+            List<float> _list_numbers = (List<float>)_dict[3];
 
             for (int i = 0; i < _list_numbers.Count(); i++)
             {
@@ -202,9 +208,9 @@ namespace Tutorial
 
         static void print_sorted(Dictionary<int, object> _dict)
         {
-            List<int> neww = (List<int>)_dict[3];
+            List<float> neww = (List<float>)_dict[3];
             neww.Sort();
-            foreach(int num in neww)
+            foreach(float num in neww)
             {
                 Console.WriteLine(num);
             }
@@ -212,29 +218,36 @@ namespace Tutorial
 
         static void max(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
-            int max = -1;
-            foreach (int num in _list_numbers)
+            List<float> _list_numbers = (List<float>)_dict[3];
+            float max = -1;
+            foreach (float num in _list_numbers)
             {
-                max = Math.Max(max, num);
+                if (max < num)
+                {
+                    max = num;
+                }
+
             }
             Console.WriteLine(max);
         }
 
         static void min(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
-            int min = 214748367;
-            foreach (int num in _list_numbers)
+            List<float> _list_numbers = (List<float>)_dict[3];
+            float min = 214748367;
+            foreach (float num in _list_numbers)
             {
-                min = Math.Min(min, num);
+                if (num < min)
+                {
+                    min = num;
+                }
             }
             Console.WriteLine(min);
         }
 
         static void avaerge(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
+            List<float> _list_numbers = (List<float>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
@@ -245,7 +258,7 @@ namespace Tutorial
 
         static void count(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
+            List<float> _list_numbers = (List<float>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
@@ -256,7 +269,7 @@ namespace Tutorial
 
         static void sum(Dictionary<int, object> _dict)
         {
-            List<int> _list_numbers = (List<int>)_dict[3];
+            List<float> _list_numbers = (List<float>)_dict[3];
             int sum = 0;
             foreach (int num in _list_numbers)
             {
@@ -270,15 +283,5 @@ namespace Tutorial
         {
             run(args);
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
