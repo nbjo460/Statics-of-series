@@ -9,7 +9,7 @@ namespace Tutorial
     internal class Project
     {
 
-        static void run()
+        static void run(string[] _args)
         {
             List<string> argument_string = new List<string>() {"", "true"};
             List<int> numbers = new List<int>();
@@ -253,7 +253,7 @@ namespace Tutorial
 
         static void Main(string[] args)
         {
-            run();
+            run(args);
         }
 
 
