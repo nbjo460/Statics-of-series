@@ -25,22 +25,43 @@ namespace Tutorial
             dict.Add(2, true);
             dict.Add(3, numbers);
 
-            request_user_input(dict);
+            manipulate_string(dict);
+
 
 
             while ((bool)dict[2])
             {
                 menu(dict);
-
             }
 
 
         }
 
+        static void manipulate_string(Dictionary <int, object> _dict)
+        {
+            bool need_user;
+            need_user = checking_args(_dict);
+            if (need_user)
+            {
+                request_user_input(_dict);
+            }
+        }
 
+        static bool checking_args(Dictionary<int, object> _dict)
+        {
+            string[] arguments = (string[])_dict[1];
+            if (arguments.Length > 0)
+            {
+
+            }
+            return true;
+        }
         static void request_user_input(Dictionary<int, object> _dict)
         {
-           string input_user;
+           
+            
+
+            string input_user;
             while (true)
             {
                 input_user = Console.ReadLine();
@@ -181,9 +202,6 @@ namespace Tutorial
                         Console.WriteLine("Try again!");
                         continue;
                 }
-
-
-
             }
         }
 
