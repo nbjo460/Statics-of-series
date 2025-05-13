@@ -218,7 +218,7 @@ namespace Tutorial
                         infinity = false;
                         break;
                     default:
-                        Console.WriteLine("Try again!");
+                        Console.WriteLine("Try again!!");
                         continue;
                 }
             }
